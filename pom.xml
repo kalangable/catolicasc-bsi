@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.org.catolicasc</groupId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -51,7 +52,7 @@
 		<profile.name>empty</profile.name>
 		<!-- Dependencies Versions -->
 		<version.junit>4.10</version.junit>
-		<version.lombok>1.14.4</version.lombok>
+		<version.lombok>1.16.2</version.lombok>
 		<version.mockito>1.9.5</version.mockito>
 		<version.config>1.2.0</version.config>
 		<version.eclipse.plugin>2.9</version.eclipse.plugin>
@@ -66,6 +67,12 @@
 			<artifactId>junit</artifactId>
 			<version>${version.junit}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${version.lombok}</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<build>
@@ -190,7 +197,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore/>
+										<ignore />
 									</action>
 								</pluginExecution>
 								<pluginExecution>
@@ -203,7 +210,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore/>
+										<ignore />
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
@@ -214,12 +221,12 @@
 		</pluginManagement>
 	</build>
 	<modules>
-	    <module>bsi-example</module>
+		<module>bsi-example</module>
 		<module>bsi-exercicio-exec</module>
 		<module>bsi-exercicio-src</module>
 		<module>bsi-chat-multi-client</module>
 		<module>bsi-http-server</module>
 		<module>bsi-JAXB</module>
-
+		<module>bsi-copia-arquivo</module>
 	</modules>
 </project>
