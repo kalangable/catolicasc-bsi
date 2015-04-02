@@ -60,6 +60,13 @@
 		<version.assembly.plugin>2.2.1</version.assembly.plugin>
 		<version.jar.plugin>2.4</version.jar.plugin>
 		<version.build.helper.plugin>1.8</version.build.helper.plugin>
+		<version.http>20070405</version.http>
+		<version.config>1.2.1</version.config>
+		
+		
+		
+			
+		
 	</properties>
 	<dependencies>
 		<dependency>
@@ -72,8 +79,16 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>${version.lombok}</version>
-			<scope>provided</scope>
+			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.typesafe</groupId>
+			<artifactId>config</artifactId>
+			<version>${version.config}</version>
+		</dependency>
+
+		
+		
 	</dependencies>
 	<build>
 		<directory>${project.basedir}/dist</directory>
@@ -227,6 +242,8 @@
 		<module>bsi-chat-multi-client</module>
 		<module>bsi-http-server</module>
 		<module>bsi-JAXB</module>
+			
 		<module>bsi-copia-arquivo</module>
+		<module>bsi-httpserver-xsd</module>
 	</modules>
 </project>
