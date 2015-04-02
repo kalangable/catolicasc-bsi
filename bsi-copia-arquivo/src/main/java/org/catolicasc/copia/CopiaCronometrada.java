@@ -24,8 +24,8 @@ public class CopiaCronometrada implements Callable<Long> {
 	@Override
 	public Long call() throws Exception {
 		log.info( "Disparando o primeiro processo" );
-		InputStream input = getInputStream( source );
-		OutputStream output = getOutputStream( target );
+		InputStream input = getInputStream();
+		OutputStream output = getOutputStream();
 
 		long initialTime = System.currentTimeMillis();
 		copia( input, output );
@@ -38,7 +38,7 @@ public class CopiaCronometrada implements Callable<Long> {
 		byte[] conteudo = new byte[1024];
 		while ( ( controlador = source.read() ) != -1 ) {
 			source.read( conteudo, 0, conteudo.length );
-			log.fine( "Gravando [" + new String( conteudo ) + "]" );
+			log.finest( "Gravando [" + new String( conteudo ) + "]" );
 			target.write( conteudo );
 		}
 		source.close();
@@ -46,31 +46,44 @@ public class CopiaCronometrada implements Callable<Long> {
 
 	}
 
-	private InputStream getInputStream( String source ) {
-		return getInputStream( new File( source ) );
+	private InputStream getInputStream() {
+
+		File fileSource = new File( this.source );
+
+		if ( !fileSource.exists() ) {
+			ClassLoader cl = getClass().getClassLoader();
+			return cl.getResourceAsStream( source );
+		}
+
+		try {
+			return new FileInputStream( fileSource );
+		} catch ( FileNotFoundException e ) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+
 	}
 
-	private InputStream getInputStream( File source ) {
-		return CopiaCronometrada.class.getResourceAsStream( target );
-
-	}
-
-	private OutputStream getOutputStream( String target ) {
-		return getOutputStream( new File( target ) );
-	}
-
-	private OutputStream getOutputStream( File target ) {
-		if ( !target.exists() ) {
+	private OutputStream getOutputStream() {
+		File targetFile = new File( this.target );
+		int controle = 0;
+		while ( !( targetFile.exists() ) ) {
 			try {
-				target.createNewFile();
-			} catch ( IOException e ) {
-				log.log( Level.SEVERE, "Nao foi possivel criar o arquivo : " + target.getAbsolutePath(), e );
+				targetFile.createNewFile();
+			} catch ( IOException e1 ) {
+				try {
+					targetFile.createTempFile( "copia_" + controle, "txt" );
+				} catch ( IOException e ) {
+					log.log( Level.SEVERE, "QUE ERRO 2" + targetFile.getAbsolutePath(), e );
+					controle++;
+				}
 			}
 		}
 		try {
-			return new FileOutputStream( target );
+			return new FileOutputStream( targetFile );
 		} catch ( FileNotFoundException e ) {
-			log.log( Level.SEVERE, "Arquivo nao localizado : " + target.getAbsolutePath(), e );
+			log.log( Level.SEVERE, "Arquivo nao localizado : " + targetFile.getAbsolutePath(), e );
 		}
 		return null;
 
