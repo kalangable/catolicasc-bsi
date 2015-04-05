@@ -9,10 +9,9 @@ import lombok.NoArgsConstructor;
 
 @XmlRootElement
 @AllArgsConstructor( access = AccessLevel.PUBLIC )
-@Data
 @NoArgsConstructor
+@Data
 public class Cidade {
-
 	private String cidade;
 	private String uf;
 	private String pais;

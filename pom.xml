@@ -48,47 +48,100 @@
 		</repository>
 	</repositories>
 	<properties>
-		<arbitrary.property.a>This is some text</arbitrary.property.a>
-		<profile.name>empty</profile.name>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
 		<!-- Dependencies Versions -->
 		<version.junit>4.10</version.junit>
-		<version.lombok>1.16.2</version.lombok>
+		<version.lombok>1.16.0</version.lombok>
 		<version.mockito>1.9.5</version.mockito>
-		<version.config>1.2.0</version.config>
 		<version.eclipse.plugin>2.9</version.eclipse.plugin>
 		<version.maven.plugin>2.3.2</version.maven.plugin>
 		<version.assembly.plugin>2.2.1</version.assembly.plugin>
 		<version.jar.plugin>2.4</version.jar.plugin>
 		<version.build.helper.plugin>1.8</version.build.helper.plugin>
+		<version.eclipse.persistence>2.5.1</version.eclipse.persistence>
+		<version.eclipse.plugin>2.9</version.eclipse.plugin>
+
+		<!-- Dependencia da aplicação -->
+
 		<version.http>20070405</version.http>
 		<version.config>1.2.1</version.config>
-		
-		
-		
-			
-		
 	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${version.junit}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${version.lombok}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.eclipse.persistence</groupId>
+				<artifactId>org.eclipse.persistence.core</artifactId>
+				<version>${version.eclipse.persistence}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.persistence</groupId>
+				<artifactId>org.eclipse.persistence.jpa</artifactId>
+				<version>${version.eclipse.persistence}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.persistence</groupId>
+				<artifactId>javax.persistence</artifactId>
+				<version>2.1.0</version>
+			</dependency>
+
+
+
+			<dependency>
+				<groupId>com.typesafe</groupId>
+				<artifactId>config</artifactId>
+				<version>${version.config}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.net.httpserver</groupId>
+				<artifactId>http</artifactId>
+				<version>${version.http}</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>org.eclipse.persistence</groupId>
+				<artifactId>org.eclipse.persistence.core</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.persistence</groupId>
+				<artifactId>org.eclipse.persistence.jpa</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.persistence</groupId>
+				<artifactId>javax.persistence</artifactId>
+			</dependency>
+
+
+
+
+
+		</dependencies>
+	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>${version.junit}</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>${version.lombok}</version>
-			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.typesafe</groupId>
-			<artifactId>config</artifactId>
-			<version>${version.config}</version>
-		</dependency>
-
-		
-		
 	</dependencies>
 	<build>
 		<directory>${project.basedir}/dist</directory>
@@ -133,11 +186,12 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${version.maven.plugin}</version>
 				<configuration>
+					<compilerArgs>
+						<arg>-Xlint</arg>
+					</compilerArgs>
+					<compilerVersion>1.7</compilerVersion>
 					<source>1.7</source>
 					<target>1.7</target>
-					<optimize>false</optimize>
-					<debug>true</debug>
-					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -166,33 +220,10 @@
 					</lifecycleMappingMetadata>
 				</configuration>
 			</plugin>
+
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!-- Build assembled artifact. In general, it is the distributable version 
-					of this software. -->
-				<plugin>
-					<artifactId>maven-assembly-plugin</artifactId>
-					<version>${version.assembly.plugin}</version>
-					<configuration>
-						<finalName>${project.artifactId}-${profile.name}-${project.version}</finalName>
-						<ignoreMissingDescriptor>true</ignoreMissingDescriptor>
-						<appendAssemblyId>true</appendAssemblyId>
-					</configuration>
-					<executions>
-						<execution>
-							<phase>package</phase>
-							<goals>
-								<goal>single</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>${version.jar.plugin}</version>
-				</plugin>
 				<!--This plugin's configuration is used to store Eclipse m2e settings 
 					only. It has no influence on the Maven build itself. -->
 				<plugin>
@@ -232,6 +263,31 @@
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
+
+				<!-- Build assembled artifact. In general, it is the distributable version 
+					of this software. -->
+				<plugin>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${version.assembly.plugin}</version>
+					<configuration>
+						<finalName>${project.artifactId}-${profile.name}-${project.version}</finalName>
+						<ignoreMissingDescriptor>true</ignoreMissingDescriptor>
+						<appendAssemblyId>true</appendAssemblyId>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>package</phase>
+							<goals>
+								<goal>single</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${version.jar.plugin}</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -242,7 +298,7 @@
 		<module>bsi-chat-multi-client</module>
 		<module>bsi-http-server</module>
 		<module>bsi-JAXB</module>
-			
+
 		<module>bsi-copia-arquivo</module>
 		<module>bsi-httpserver-xsd</module>
 	</modules>

@@ -7,10 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@XmlRootElement
+@XmlRootElement( name = "aeroporto" )
 @AllArgsConstructor( access = AccessLevel.PUBLIC )
-@Data
 @NoArgsConstructor
+@Data
 public class Aeroporto {
 	private String nome;
 	private boolean internacional;

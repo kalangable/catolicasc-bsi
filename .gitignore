@@ -7,3 +7,4 @@
 target/
 test-classes/
 dist/
+.factorypath
