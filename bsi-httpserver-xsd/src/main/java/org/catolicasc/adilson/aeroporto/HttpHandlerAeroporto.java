@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
 
 import org.catolicasc.adilson.bean.Aeroporto;
-import org.eclipse.persistence.jaxb.MarshallerProperties;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -56,7 +55,7 @@ public class HttpHandlerAeroporto implements HttpHandler {
 		{
 
 			marshaller.setProperty( "eclipselink.media-type", "application/json" );
-			marshaller.setProperty( MarshallerProperties.JSON_INCLUDE_ROOT, true );
+			marshaller.setProperty( "eclipselink.json.include-root", true );
 		}
 		// OutputStream outputStream = http.getResponseBody();
 		marshaller.marshal( aeroporto, output );
