@@ -63,11 +63,11 @@
 		<version.build.helper.plugin>1.8</version.build.helper.plugin>
 		<version.eclipse.persistence>2.6.0</version.eclipse.persistence>
 		<version.eclipse.plugin>2.9</version.eclipse.plugin>
-
 		<!-- Dependencia da aplicação -->
-
 		<version.http>20070405</version.http>
 		<version.config>1.2.1</version.config>
+		<version.jaxws-rt>2.2.10</version.jaxws-rt>
+		
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -77,21 +77,18 @@
 				<version>${version.junit}</version>
 				<scope>test</scope>
 			</dependency>
-
 			<dependency>
 				<groupId>org.apache.maven</groupId>
 				<artifactId>maven-compat</artifactId>
 				<version>${version.maven.plugin}</version>
 				<scope>test</scope>
 			</dependency>
-
 			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
 				<version>${version.lombok}</version>
 				<scope>provided</scope>
 			</dependency>
-
 			<dependency>
 				<groupId>org.eclipse.persistence</groupId>
 				<artifactId>org.eclipse.persistence.core</artifactId>
@@ -102,7 +99,6 @@
 				<artifactId>org.eclipse.persistence.jpa</artifactId>
 				<version>${version.eclipse.persistence}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.eclipse.persistence</groupId>
 				<artifactId>org.eclipse.persistence.moxy</artifactId>
@@ -113,7 +109,6 @@
 				<artifactId>jaxb-api</artifactId>
 				<version>2.2.12</version>
 			</dependency>
-
 			<dependency>
 				<groupId>com.typesafe</groupId>
 				<artifactId>config</artifactId>
@@ -123,6 +118,12 @@
 				<groupId>com.sun.net.httpserver</groupId>
 				<artifactId>http</artifactId>
 				<version>${version.http}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.sun.xml.ws</groupId>
+				<artifactId>jaxws-rt</artifactId>
+				<version>${version.jaxws-rt}</version>
 			</dependency>
 
 		</dependencies>
@@ -191,7 +192,6 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-
 				<!-- Build assembled artifact. In general, it is the distributable version 
 					of this software. -->
 				<plugin>
@@ -226,8 +226,8 @@
 		<module>bsi-chat-multi-client</module>
 		<module>bsi-http-server</module>
 		<module>bsi-JAXB</module>
-
 		<module>bsi-copia-arquivo</module>
 		<module>bsi-httpserver-xsd</module>
+		<module>bsi-webservice-aritmetica</module>
 	</modules>
 </project>
