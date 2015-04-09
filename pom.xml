@@ -67,7 +67,7 @@
 		<version.http>20070405</version.http>
 		<version.config>1.2.1</version.config>
 		<version.jaxws-rt>2.2.10</version.jaxws-rt>
-		
+
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -126,7 +126,51 @@
 				<version>${version.jaxws-rt}</version>
 			</dependency>
 
+			<!-- Dependencias Internas -->
+			<dependency>
+				<groupId>br.org.catolicasc</groupId>
+				<artifactId>bsi-webservice-aritmetica-lib</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.org.catolicasc</groupId>
+				<artifactId>bsi-chat-multi-client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.org.catolicasc</groupId>
+				<artifactId>bsi-http-server</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.org.catolicasc</groupId>
+				<artifactId>bsi-JAXB</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.org.catolicasc</groupId>
+				<artifactId>bsi-copia-arquivo</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.org.catolicasc</groupId>
+				<artifactId>bsi-httpserver-xsd</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.org.catolicasc</groupId>
+				<artifactId>bsi-webservice-aritmetica</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.org.catolicasc</groupId>
+				<artifactId>bsi-webservice-aritmetica-server</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
 		</dependencies>
+
+
 	</dependencyManagement>
 	<dependencies>
 		<dependency>
@@ -215,6 +259,14 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>${version.jar.plugin}</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addClasspath>true</addClasspath>
+								<classpathPrefix>lib/</classpathPrefix>
+							</manifest>
+						</archive>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
