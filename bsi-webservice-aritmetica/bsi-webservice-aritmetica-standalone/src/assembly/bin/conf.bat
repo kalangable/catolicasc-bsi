@@ -1,6 +1,7 @@
+@echo off
 # CONFIGURABLE VARIABLES
-LIBDIR="./lib"
-LOG_CONF=./conf/logging.conf
+#SET LIBDIR="./lib"
+#SET LOG_CONF=./conf/logging.conf
 
 # RUNTIME VARIABLES
 #JAVA_HOME=./jdk
