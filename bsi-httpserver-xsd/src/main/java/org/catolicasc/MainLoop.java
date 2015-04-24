@@ -16,12 +16,10 @@ public class MainLoop {
 
 	public static void main( String[] args ) throws IOException {
 
-
-
 		val pool = Executors.newFixedThreadPool( 100 );
 
 		val inetAddress = new InetSocketAddress( "localhost", 2000 );
-		log.severe( "Iniciando a aplicacao" );
+		log.fine( "Iniciando a aplicacao" );
 		val httpServer = HttpServer.create( inetAddress, 10 );
 		val http = new HttpServerAeroporto( httpServer, pool );
 		http.execute();

@@ -5,11 +5,11 @@
 
 
  set JAVA=java
- set JAVA_OPTS="-Djava.util.logging.config.file=%LOG_CONF%"
+ set JAVA_OPTS=-Djava.util.logging.config.file=%LOG_CONF%
 
  
  set MAIN_CLASS=org.catolicasc.MainLoop
- set CLASSPATH=".\lib
+ set CLASSPATH=".;.\lib
  for %%a in (%LIBDIR%\*.jar) do (
    set CLASSPATH=!CLASSPATH!;%%a
  )

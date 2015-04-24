@@ -7,10 +7,10 @@ import com.typesafe.config.ConfigFactory;
 
 public class Configuration {
 
-	static final String CONF_REFERENCE = "config/reference";
+	static final String CONF_REFERENCE = "conf/reference";
 
 	public static Config loadConfiguration() {
-		val defaultConfiguration = ConfigFactory.load( "config/application" );
+		val defaultConfiguration = ConfigFactory.load( "conf/application" );
 		return defaultConfiguration.withFallback( ConfigFactory.load( CONF_REFERENCE ) );
 	}
 
