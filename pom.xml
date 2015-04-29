@@ -132,6 +132,13 @@
 				<artifactId>bsi-webservice-aritmetica-lib</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			
+			<dependency>
+				<groupId>br.org.catolicasc</groupId>
+				<artifactId>bsi-rmi-lib</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			
 			<dependency>
 				<groupId>br.org.catolicasc</groupId>
 				<artifactId>bsi-chat-multi-client</artifactId>
@@ -273,6 +280,7 @@
 	</build>
 	<modules>
 		<module>bsi-example</module>
+		<module>bsi-rmi</module>
 		<module>bsi-exercicio-exec</module>
 		<module>bsi-exercicio-src</module>
 		<module>bsi-chat-multi-client</module>
