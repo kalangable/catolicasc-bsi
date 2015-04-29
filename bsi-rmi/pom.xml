@@ -13,6 +13,5 @@
 		<module>bsi-rmi-lib</module>
 		<module>bsi-rmi-server</module>
 		<module>bsi-rmi-client</module>
-		<module>bsi-rmi-dist</module>
 	</modules>
 </project>
