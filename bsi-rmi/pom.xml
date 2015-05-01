@@ -13,5 +13,6 @@
 		<module>bsi-rmi-lib</module>
 		<module>bsi-rmi-server</module>
 		<module>bsi-rmi-client</module>
-	</modules>
+		<module>bsi-rmi-smart-house</module>
+		</modules>
 </project>
